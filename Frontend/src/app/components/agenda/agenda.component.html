@@ -1,0 +1,97 @@
+<div class="container mt-5">
+
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <div class="card">
+        <div class="card-body text-center">
+          <h3 class="titulo">Agenda</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="titulo">Agregar contactos a la agenda</h5>
+
+          <form [formGroup]="form" (ngSubmit)="guardarAgenda()">
+            <div class="input-group input-group-lg mb-3">
+              <span class="input-group-text">
+                <i class="fa fa-user"
+                  [class.green-icon]="this.form.get('nombre')?.valid"
+                  [class.red-icon]="this.form.get('nombre')?.invalid && this.form.get('nombre')?.touched"
+                  >
+                </i>
+              </span>
+              <input formControlName="nombre" type="text" class="form-control" placeholder="Ingrese el nombre">
+            </div>
+
+            <div class="input-group input-group-lg mb-3">
+              <span class="input-group-text">
+                <i class="fa fa-user"
+                  [class.green-icon]="this.form.get('apellido')?.valid"
+                  [class.red-icon]="this.form.get('apellido')?.invalid && this.form.get('apellido')?.touched"
+                ></i>
+              </span>
+              <input formControlName="apellido" type="text" class="form-control" placeholder="Ingrese el apellido">
+            </div>
+
+            <div class="input-group input-group-lg mb-3">
+              <span class="input-group-text">
+                <i class="fa fa-phone-square"
+                  [class.green-icon]="this.form.get('telefono')?.valid"
+                  [class.red-icon]="this.form.get('telefono')?.invalid && this.form.get('telefono')?.touched"
+                ></i>
+              </span>
+              <input formControlName="telefono" type="text" class="form-control" placeholder="Ingrese el telefono">
+            </div>
+
+            <div class="input-group input-group-lg mb-3">
+              <span class="input-group-text">
+                <i class="fa fa-home"
+                  [class.green-icon]="this.form.get('domicilio')?.valid"
+                  [class.red-icon]="this.form.get('domicilio')?.invalid && this.form.get('domicilio')?.touched"
+                ></i>
+              </span>
+              <input formControlName="domicilio" type="text" class="form-control" placeholder="Ingrese el domicilio">
+            </div>
+
+            <div class="d-grid gap-2">
+              <button [disabled]="this.form.invalid" type="submit" class="btn btn-success btn-lg">Aceptar</button>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="titulo">Listar los contactos de la agenda</h5>
+
+          <table class="table">
+            <tbody>
+              <tr *ngFor="let agenda of listAgendas">
+                <td>{{agenda.nombre}}</td>
+                <td>{{agenda.apellido}}</td>
+                <td>{{agenda.domicilio}}</td>
+                <td>{{agenda.telefono}}</td>
+                <td>
+                  <i (click)="editarAgenda(agenda)" class="fa fa-edit text-info"></i>
+                </td>
+                <td>
+                  <i (click)="eliminarAgenda(agenda.id)" class="fa fa-trash text-danger"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
