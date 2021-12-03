@@ -6,4 +6,4 @@ _Las siguientes tecnologias:_
 * Angular 11 - Para la parte del frontend
 
 ### Autor ✒️
-* **Alumno: _Ezequiel Romero_** 
+**_Ezequiel Romero_** 
